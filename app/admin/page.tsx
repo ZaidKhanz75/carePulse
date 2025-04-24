@@ -10,8 +10,7 @@ import React from 'react'
 const Admin = async () => {
 
     const appointments = await getRecentAppointmentList()
-    // console.log('Appointments:', appointments);
-
+    
   return (
     <div className='mx-auto flex max-w-7xl flex-col space-y-14'>
         <header className='admin-header'>
