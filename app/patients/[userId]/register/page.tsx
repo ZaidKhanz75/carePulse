@@ -9,7 +9,14 @@ import * as Sentry from "@sentry/nextjs";
 const Register = async ({params:{userId}}: SearchParamProps) => {
     const user = await getUser(userId);
 
-    Sentry?.metrics?.set?.("user_view_register", user.name);
+   
+    Sentry.setTag("page", "register");
+    Sentry.setUser({ id: userId, username: user.name });
+    Sentry.addBreadcrumb({
+    category: "register",
+    message: `User viewed new register page`,
+    level: "info",
+    });   
 
   return (
     <div className="flex h-screen max-h-screen">
